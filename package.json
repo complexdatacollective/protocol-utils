@@ -1,0 +1,36 @@
+{
+  "name": "@codaco/protocol-utils",
+  "version": "1.0.0",
+  "description": "Utilities for working with Network Canvas protocols",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "jest"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/complexdatacollective/protocol-utils.git"
+  },
+  "author": "Complex Data Collective",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/complexdatacollective/protocol-utils/issues"
+  },
+  "homepage": "https://github.com/complexdatacollective/protocol-utils#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
+  "dependencies": {
+    "@codaco/shared-consts": "^1.0.0",
+    "@faker-js/faker": "^6.1.2",
+    "lodash": "^4.17.21",
+    "typescript": "^4.6.3",
+    "uuid": "^8.3.2"
+  }
+}
