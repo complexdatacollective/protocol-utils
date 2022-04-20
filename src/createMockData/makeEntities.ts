@@ -1,7 +1,8 @@
 import { entityPrimaryKeyProperty, entityAttributesProperty } from '@codaco/shared-consts';
 import { has } from 'lodash';
 import { v4 as uuid } from 'uuid';
-import { mockValue } from './makeMockValue';
+import { makeMockValue } from './makeMockValue';
+import { NCVariableDefinition } from './makeNetwork';
 
 export type NCEntity = {
   [entityPrimaryKeyProperty]: string;
@@ -23,11 +24,14 @@ export type NCEdge = NCNode & {
 
 export type NCEgo = NCEntity;
 
-export const makeEntity = (variables = {}, promptAttributes = {}): NCEntity => {
+export const makeEntity = (
+  variables: { [key: string]: NCVariableDefinition } = {},
+  promptAttributes = {},
+): NCEntity => {
   const mockAttributes = Object.entries(variables).reduce(
     (acc, [variableId, variable]) => {
       if (!has(promptAttributes, variableId)) {
-        acc[variableId] = mockValue(variable);
+        acc[variableId] = makeMockValue(variable);
       }
       return acc;
     }, {},

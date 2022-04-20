@@ -8,7 +8,7 @@ export type NCNetwork = {
   ego: NCEgo;
 };
 
-enum InputComponent {
+export enum InputComponent {
   TextInput,
   TextArea,
   NumberInput,
@@ -23,7 +23,7 @@ enum InputComponent {
   BooleanChoice,
 };
 
-enum VariableType {
+export enum VariableType {
   boolean,
   text,
   number,
@@ -35,9 +35,15 @@ enum VariableType {
   location,
 };
 
+export type NCOptionsOption = {
+  label: string,
+  value: string | number,
+}
+
 export type NCVariableDefinition = {
   name: string;
   component?: InputComponent,
+  options?: Array<NCOptionsOption>,
   type: VariableType,
   validation?: {
     [key: string]: any;
