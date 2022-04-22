@@ -1,4 +1,4 @@
-import faker from '@faker-js/faker';
+import faker from '@faker-js/faker/locale/en_GB';
 import {InputComponent, NcVariableDefinition, VariableType} from './protocol-types';
 
 const mockCoord = () => faker.datatype.number({min: 0, max: 1, precision: 0.000_001});
