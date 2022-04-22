@@ -2,5 +2,5 @@
 
 Utilities for working with Network Canvas protocols. Primarily:
 
-- Validation
+- Validation (todo)
 - Mock data generation

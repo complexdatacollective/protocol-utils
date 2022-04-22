@@ -4,6 +4,7 @@ import {NcNetwork, NcProtocol} from './protocol-types';
 import {NcNode, NcEdge, NcEgo} from './entity-types';
 import {makeNode, makeEgo, makeEdge} from './make-entities';
 
+// Assumes protocol is valid
 export const makeNetwork = (protocol: NcProtocol): NcNetwork => {
   const codebookNodeTypes = Object.keys(protocol.codebook.node ?? {});
   const codebookEdgeTypes = Object.keys(protocol.codebook.edge ?? {});

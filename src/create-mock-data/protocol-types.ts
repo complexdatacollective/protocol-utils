@@ -8,18 +8,18 @@ export type NcNetwork = {
 };
 
 export enum InputComponent {
-  TextInput,
-  TextArea,
-  NumberInput,
-  CheckboxGroup,
-  Toggle,
-  RadioGroup,
-  ToggleButtonGroup,
-  LikertScale,
-  VisualAnalogScale,
-  DatePicker,
-  RelativeDatePicker,
-  BooleanChoice,
+  Text = 'Text',
+  TextArea = 'TextArea',
+  Number = 'Number',
+  CheckboxGroup = 'CheckboxGroup',
+  Toggle = 'Toggle',
+  RadioGroup = 'RadioGroup',
+  ToggleButtonGroup = 'ToggleButtonGroup',
+  LikertScale = 'LikertScale',
+  VisualAnalogScale = 'VisualAnalogScale',
+  DatePicker = 'DatePicker',
+  RelativeDatePicker = 'RelativeDatePicker',
+  BooleanChoice = 'BooleanChoice',
 }
 
 export enum VariableType {
@@ -36,14 +36,16 @@ export enum VariableType {
 
 export type NcOptionsOption = {
   label: string;
-  value: string | number;
+  value: string | number | boolean;
 };
 
+// Some of these types need to allow 'strings', since typescript has
+// no way to infer types from json: https://github.com/microsoft/TypeScript/issues/32063
 export type NcVariableDefinition = {
   name: string;
-  component?: InputComponent;
+  component?: InputComponent | string;
   options?: NcOptionsOption[];
-  type: VariableType;
+  type: VariableType | string;
   validation?: Record<string, any>;
 };
 
@@ -53,14 +55,14 @@ export type NcEntityTypeDefinition = {
 
 export type NcNodeTypeDefinition = NcEntityTypeDefinition & {
   name: string;
-  color: Color;
-  iconVariant: string;
+  color: Color | string;
+  iconVariant?: string;
 };
 
 export type NcEdgeTypeDefinition = NcNodeTypeDefinition;
 
 export type NcCodebook = {
-  node?: Record<string, NcEntityTypeDefinition>;
+  node?: Record<string, NcNodeTypeDefinition>;
   edge?: Record<string, NcEdgeTypeDefinition>;
   ego?: NcEntityTypeDefinition;
 };
@@ -73,7 +75,7 @@ export type NcStageDefinition = {
 export type NcProtocol = {
   description: string;
   lastModified: string;
-  schemaVersion: string;
+  schemaVersion: number;
   codebook: NcCodebook;
   assetManifest?: Record<string, unknown>;
   stages: NcStageDefinition[];

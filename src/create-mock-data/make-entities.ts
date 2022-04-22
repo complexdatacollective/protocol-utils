@@ -37,7 +37,7 @@ export const makeNode = (
 
   const modelData = {
     promptIDs: ['mock'], // eslint-disable-line @typescript-eslint/naming-convention
-    stageId: 'mock',
+    stageId: 'mock', // Should pass in the protocol here and randomly assign stage IDs
     type: typeID,
   };
 
@@ -54,10 +54,11 @@ export const makeEdge = (
   variables: Record<string, NcVariableDefinition> = {},
   promptAttributes: Record<string, NcVariableDefinition> = {},
 ): NcEdge => { // eslint-disable-line max-params
-  const node: NcNode = makeNode(typeID, variables, promptAttributes);
+  const entity: NcEntity = makeEntity(variables, promptAttributes);
 
   return {
-    ...node,
+    ...entity,
+    type: typeID,
     [edgeSourceProperty]: from,
     [edgeTargetProperty]: to,
   };
