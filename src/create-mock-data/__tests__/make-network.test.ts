@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import {makeNetwork} from '../make-network';
+import { makeNetwork } from '../make-network';
 import mockProtocol from './mockData/protocol.json';
 
 describe('makeNetwork()', () => {

@@ -1,4 +1,4 @@
-import {entityAttributesProperty, entityPrimaryKeyProperty} from '@codaco/shared-consts';
+import { entityAttributesProperty, entityPrimaryKeyProperty } from '@codaco/shared-consts';
 
 export type NcEntity = {
   [entityPrimaryKeyProperty]: string;
